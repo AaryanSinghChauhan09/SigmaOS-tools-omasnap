@@ -1,0 +1,1 @@
+# SigmaOS-tools-omasnap\n\nSigmaOS omasnap - Wayland screenshot utility\n

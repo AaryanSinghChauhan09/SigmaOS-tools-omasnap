@@ -1,0 +1,14 @@
+[package]
+name = "sigmaos-tools-omasnap"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "sigmaos_tools_omasnap"
+path = "src/lib.rs"
+
+[[bin]]
+name = "omasnap"
+path = "src/main.rs"
+
+[dependencies]
