@@ -3,7 +3,7 @@ name = "SigmaOS-tools-omasnap"
 tier = 2
 stability = "scaffold"
 language = "rust"
-description = "tools-omasnap component"
+description = "SigmaOS Tools omasnap - Wayland screenshot utility (omacom/omasnap parity)"
 upstream = []
 
 [contract]
