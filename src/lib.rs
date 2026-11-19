@@ -1,3 +1,4 @@
+#![forbid(unsafe_code)]
 //! omasnap - Wayland screenshot utility for SigmaOS
 
 use std::path::PathBuf;
@@ -100,5 +101,39 @@ impl SnapEngine {
 impl Default for SnapEngine {
     fn default() -> Self {
         Self::new()
+    }
+}
+
+
+#[cfg(test)]
+mod oma_snap_tests {
+    use super::*;
+
+    #[test]
+    fn test_image_formats_extensions_aaa() {
+        // Arrange & Act & Assert
+        assert_eq!(ImageFormat::Png.extension(), "png");
+        assert_eq!(ImageFormat::Jpg.extension(), "jpg");
+        assert_eq!(ImageFormat::Webp.extension(), "webp");
+    }
+
+    #[test]
+    fn test_window_mode_validation_aaa() {
+        // Arrange
+        let cfg = SnapEngine::build_config(CaptureMode::ActiveWindow, "/tmp/win.webp", ImageFormat::Webp);
+        // Act
+        let val = SnapEngine::validate_config(&cfg);
+        // Assert
+        assert!(val.is_ok());
+        assert_eq!(cfg.format.extension(), "webp");
+    }
+
+    #[test]
+    fn test_empty_history_aaa() {
+        // Arrange & Act
+        let engine = SnapEngine::new();
+        // Assert
+        assert_eq!(engine.history_count(), 0);
+        assert!(engine.last_capture().is_none());
     }
 }
